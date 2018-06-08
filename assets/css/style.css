@@ -1,12 +1,12 @@
 body {
   margin: 10px;
   background: black;
-  
 }
 p {
   color: lightblue;
   margin: 20px 0 0 10px;
-  display: block;
+  width: 350px;
+  display: inline-block;
 }
 container {
   margin: 0;
@@ -17,4 +17,9 @@ button {
 }
 img {
   margin: 3px;
+  border: 3px;
+  border-color: blue;
+  border-style: solid;
+  border-radius: 5px;
+  
 }

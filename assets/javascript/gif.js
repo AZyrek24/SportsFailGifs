@@ -12,18 +12,16 @@ $(document).ready(function () {
   //Generates buttons for each item in the topics array
   function getButtons() {
     $("#buttons").empty();
-    var topicIndex = 0;
     for (var i = 0; i < topics.length; i++) {
       newBtn = $("<button type='button' class='btn btn-outline-primary' data-sport='" + topics[i] + "'>" + topics[i] + "</button>");
       $("#buttons").append(newBtn);
-      topicIndex++;
     }
   }
 
   //Creates a new button upon text field submission
-  $("#btn-submit").on("click", function (event) {
+  $("#btn-submit").on("click", function () {
     sportId = $("#sport-id").val();
-    topics.push(sportId.toUpperCase(0) + " Fails");
+    topics.push(sportId.toUpperCase(0) + " FAILS");
     getButtons();
   })
 
@@ -53,8 +51,8 @@ $(document).ready(function () {
         var sportImage = $("<img>");
         var p = $("<p>").text("Rating: " + results[i].rating);
         sportImage.attr({ "src": imageUrl, "data-still": imageStill, "data-animate": imageAnimate, "data-state": "still", "class": "gif" });        
-        gifDiv.prepend(sportImage);
         gifDiv.prepend(p);
+        p.append(sportImage);
       }
     });
 
