@@ -19,18 +19,17 @@ $(document).ready(function () {
   }
 
   //Creates a new button upon text field submission
-  $("#btn-submit").on("click", function () {
-    sportId = $("#sport-id").val();
+  $("#btn-submit").on("click", function (event) {
+    sportId = $("#sport-id").val().trim();
     topics.push(sportId.toUpperCase(0) + " FAILS");
     getButtons();
   })
-
-
 
   //Clicking does an AJAX request, then populates gifs when returned
   $("body").on("click", "button", function (event) {
     event.preventDefault();
     var sport = $(this).attr("data-sport").replace(/\s/g, "+");
+    //Giphy API url address
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + sport + "fails&api_key=h4SRVrmm0RShPORSUSzs3bogyNR6rmkA&limit=10";
 
     $.ajax({
@@ -52,6 +51,7 @@ $(document).ready(function () {
         var p = $("<p>").text("Rating: " + results[i].rating);
         sportImage.attr({ "src": imageUrl, "data-still": imageStill, "data-animate": imageAnimate, "data-state": "still", "class": "gif" });        
         gifDiv.prepend(p);
+        p.append("<br>");
         p.append(sportImage);
       }
     });
